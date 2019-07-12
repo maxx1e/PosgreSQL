@@ -130,7 +130,8 @@ case "$metricname" in
                 ;;
 # Database Size, tables and indexes
         db_size)
-                printf '{"type":"integer", "name":"DBSize", "value":"%s"}\n' "$(DBSize)"
+				convert=$(DBSize)
+                printf '{"type":"integer", "name":"DBSize", "value":"%s"}\n' $(($convert/1024/1024))
                 ;;
         table_size)
                printf '{"type":"integer", "name":"TableSize", "value":"%s"}\n' "$(TableSize)" 

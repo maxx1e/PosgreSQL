@@ -124,7 +124,9 @@ case "$metricname" in
                 printf '{"type":"integer", "name":"CacheUsage", "value":"%.0f%s"}\n' "$(CacheHit)"
                 ;;
         uptime)
-                printf '{"type":"integer", "name":"UpTime", "value":"%s"}\n' "$(UpTime)"
+				secs=$(UpTime)
+                #printf '{"type":"integer", "name":"UpTime", "value":"%dh:%dm:%ds"}\n' $(($secs/3600)) $(($secs%3600/60)) $(($secs%60)) # This will convert output into string, thus requires conf file update.
+                printf '{"type":"integer", "name":"UpTime", "value":"%s"}\n' "$secs"
                 ;;
 # Database Size, tables and indexes
         db_size)
